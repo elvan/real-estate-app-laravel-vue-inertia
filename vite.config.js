@@ -1,5 +1,6 @@
 import vue from '@vitejs/plugin-vue';
 import laravel from 'laravel-vite-plugin';
+import path from 'path';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
@@ -10,9 +11,14 @@ export default defineConfig({
         }),
         vue({
             template: {
-                // base: null,
-                // includeAbsolute: false,
+                base: null,
+                includeAbsolute: false,
             },
         }),
     ],
+    resolve: {
+        alias: {
+            ziggy: path.resolve('vendor/tightenco/ziggy/dist/vue.es.js'),
+        },
+    },
 });

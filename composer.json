@@ -13,7 +13,8 @@
         "inertiajs/inertia-laravel": "v0.6.9",
         "laravel/framework": "v9.52.9",
         "laravel/sanctum": "v3.2.5",
-        "laravel/tinker": "v2.8.1"
+        "laravel/tinker": "v2.8.1",
+        "tightenco/ziggy": "^1.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.8",
