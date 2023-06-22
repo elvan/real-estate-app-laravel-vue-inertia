@@ -1,0 +1,17 @@
+{
+    "include": [
+        "resources/js/**/*",
+        "resources/js/**/*.vue"
+    ],
+    "exclude": [],
+    "compilerOptions": {
+        "allowJs": true,
+        "composite": true,
+        "baseUrl": "./",
+        "paths": {
+            "@/*": [
+                "resources/js/*"
+            ]
+        }
+    }
+}
