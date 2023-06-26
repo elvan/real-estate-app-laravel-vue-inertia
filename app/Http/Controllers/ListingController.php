@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Listing;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ListingController extends Controller
 {
@@ -19,13 +18,17 @@ class ListingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         return inertia(
             'Listing/Index',
             [
+                'filters' => $request->only([
+                    'priceFrom', 'priceTo', 'beds', 'baths', 'areaFrom', 'areaTo'
+                ]),
                 'listings' => Listing::orderByDesc('created_at')
                     ->paginate(10)
+                    ->withQueryString()
             ]
         );
     }
