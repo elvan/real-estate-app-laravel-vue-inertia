@@ -1,0 +1,1 @@
+<template>Say hello!</template>
