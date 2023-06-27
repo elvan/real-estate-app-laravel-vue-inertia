@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Listing;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class RealtorListingController extends Controller
@@ -13,11 +14,21 @@ class RealtorListingController extends Controller
         $this->authorizeResource(Listing::class, 'listing');
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $filters = [
+            'deleted' => $request->boolean('deleted')
+        ];
+
         return inertia(
             'Realtor/Index',
-            ['listings' => Auth::user()->listings]
+            [
+                'listings' => Auth::user()
+                    ->listings()
+                    ->mostRecent()
+                    ->filter($filters)
+                    ->get()
+            ]
         );
     }
 
