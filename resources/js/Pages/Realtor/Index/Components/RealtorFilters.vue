@@ -15,9 +15,14 @@
 </template>
 
 <script setup>
-import { useForm } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
+import { reactive, watch } from 'vue';
 
-const filterForm = useForm({
+const filterForm = reactive({
     deleted: false,
 });
+// reactive / ref / computed
+watch(filterForm, () =>
+    Inertia.get(route('realtor.listing.index'), filterForm, { preserveState: true, preserveScroll: true })
+);
 </script>
