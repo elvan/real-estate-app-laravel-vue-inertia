@@ -6,10 +6,10 @@
                     <Link :href="route('listing.index')">Listings</Link>
                 </div>
                 <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
-                    <Link :href="route('listing.index')">RealEstate</Link>
+                    <Link :href="route('listing.index')">LaraZillow</Link>
                 </div>
                 <div v-if="user" class="flex items-center gap-4">
-                    <div class="text-sm text-gray-500">{{ user.name }}</div>
+                    <Link class="text-sm text-gray-500" :href="route('realtor.listing.index')">{{ user.name }}</Link>
                     <Link :href="route('listing.create')" class="btn-primary">+ New Listing</Link>
                     <div>
                         <Link :href="route('logout')" method="delete" as="button">Logout</Link>
