@@ -6,6 +6,7 @@
     "exclude": [],
     "compilerOptions": {
         "allowJs": true,
+        "checkJs": false,
         "composite": true,
         "baseUrl": "./",
         "paths": {
