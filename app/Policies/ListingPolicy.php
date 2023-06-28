@@ -12,7 +12,7 @@ class ListingPolicy
 
     public function before(?User $user, $ability)
     {
-        if ($user?->is_admin) {
+        if ($user?->is_admin /*&& $ability === 'update'*/) {
             return true;
         }
     }
@@ -37,7 +37,11 @@ class ListingPolicy
      */
     public function view(?User $user, Listing $listing)
     {
-        return true;
+        if ($listing->by_user_id === $user?->id) {
+            return true;
+        }
+
+        return $listing->sold_at === null;
     }
 
     /**
@@ -60,7 +64,8 @@ class ListingPolicy
      */
     public function update(User $user, Listing $listing)
     {
-        return $user->id === $listing->by_user_id;
+        return $listing->sold_at === null
+            && ($user->id === $listing->by_user_id);
     }
 
     /**
