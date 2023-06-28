@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\ListingImage;
+use App\Models\Offer;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,6 +33,11 @@ class Listing extends Model
     public function images(): HasMany
     {
         return $this->hasMany(ListingImage::class);
+    }
+
+    public function offers(): HasMany
+    {
+        return $this->hasMany(Offer::class, 'listing_id');
     }
 
     public function scopeMostRecent(Builder $query): Builder
