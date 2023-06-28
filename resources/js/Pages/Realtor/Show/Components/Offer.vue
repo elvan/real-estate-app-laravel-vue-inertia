@@ -5,7 +5,7 @@
             <span
                 v-if="offer.accepted_at"
                 class="dark:bg-green-900 dark:text-green-200 bg-green-200 text-green-900 p-1 rounded-md uppercase ml-1"
-                >accepeted</span
+                >accepted</span
             ></template
         >
 
@@ -21,7 +21,7 @@
             </div>
             <div>
                 <Link
-                    v-if="notSold"
+                    v-if="!isSold"
                     :href="route('realtor.offer.accept', { offer: offer.id })"
                     class="btn-outline text-xs font-medium"
                     as="button"
@@ -43,9 +43,8 @@ import { computed } from 'vue';
 const props = defineProps({
     offer: Object,
     listingPrice: Number,
+    isSold: Boolean,
 });
 const difference = computed(() => props.offer.amount - props.listingPrice);
 const madeOn = computed(() => new Date(props.offer.created_at).toDateString());
-
-const notSold = computed(() => !props.offer.accepted_at && !props.offer.rejected_at);
 </script>
