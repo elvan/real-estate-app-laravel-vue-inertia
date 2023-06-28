@@ -57,8 +57,9 @@
                         <Link
                             :href="route('realtor.listing.image.create', { listing: listing.id })"
                             class="block w-full btn-outline text-xs font-medium text-center"
-                            >Images</Link
                         >
+                            Images ({{ listing.images_count }})
+                        </Link>
                     </div>
                 </section>
             </div>
