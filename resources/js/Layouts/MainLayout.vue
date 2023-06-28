@@ -6,7 +6,7 @@
                     <Link :href="route('listing.index')">Listings</Link>
                 </div>
                 <div class="text-xl text-indigo-600 dark:text-indigo-300 font-bold text-center">
-                    <Link :href="route('listing.index')">LaraZillow</Link>
+                    <Link :href="route('listing.index')">RealEstate</Link>
                 </div>
                 <div v-if="user" class="flex items-center gap-4">
                     <Link class="text-sm text-gray-500" :href="route('realtor.listing.index')">{{ user.name }}</Link>
