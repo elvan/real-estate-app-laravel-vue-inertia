@@ -8,7 +8,15 @@
             <div class="w-full text-center font-medium text-gray-500">No offers</div>
         </Box>
 
-        <div v-else class="md:col-span-7 items-center">This is displayed when there are offers!</div>
+        <div v-else class="md:col-span-7 items-center">
+            <Offer
+                v-for="offer in listing.offers"
+                :key="offer.id"
+                class="mb-4"
+                :offer="offer"
+                :listing-price="listing.price"
+            />
+        </div>
 
         <Box class="md:col-span-5">
             <template #header>Basic Info</template>
@@ -25,6 +33,7 @@ import ListingAddress from '@/Components/ListingAddress.vue';
 import ListingSpace from '@/Components/ListingSpace.vue';
 import Price from '@/Components/Price.vue';
 import Box from '@/Components/UI/Box.vue';
+import Offer from '@/Pages/Realtor/Show/Components/Offer.vue';
 import { Link } from '@inertiajs/inertia-vue3';
 import { computed } from 'vue';
 
